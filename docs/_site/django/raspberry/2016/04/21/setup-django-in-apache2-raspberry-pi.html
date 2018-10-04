@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/static/img/favicon.ico" />
+    <title>Setup Django in apache2 Raspberry Pi - Stack Problems</title>
+    <meta name="author" content="Agus Makmun" />
+    <meta name="description" content="Setup Django in apache2 Raspberry Pi" />
+    <meta name="keywords" content="Setup Django in apache2 Raspberry Pi, Stack Problems, django, raspberry" />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+    <meta content="1749788565247320" property="fb:app_id">
+    <meta content="Stack Problems" property="og:site_name">
+
+    
+
+    
+      <meta content="Setup Django in apache2 Raspberry Pi" property="og:title">
+      <meta content="article" property="og:type">
+    
+
+    
+      <meta content="My Personal Stack Problems" property="og:description">
+    
+
+    
+      <meta content="http://localhost:4000/django/raspberry/2016/04/21/setup-django-in-apache2-raspberry-pi.html" property="og:url">
+    
+
+    
+      <meta content="2016-04-21T00:32:34+09:00" property="article:published_time">
+      <meta content="http://localhost:4000/about/" property="article:author">
+    
+
+    
+      <meta content="http://localhost:4000/static/img/avatar.jpg" property="og:image">
+    
+
+    
+      
+        <meta content="django" property="article:section">
+      
+    
+
+    
+      
+    
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@agusmakmun6">
+    <meta name="twitter:creator" content="@agusmakmun6">
+
+    
+      <meta name="twitter:title" content="Setup Django in apache2 Raspberry Pi">
+    
+
+    
+      <meta name="twitter:url" content="http://localhost:4000/django/raspberry/2016/04/21/setup-django-in-apache2-raspberry-pi.html">
+    
+
+    
+      <meta name="twitter:description" content="My Personal Stack Problems">
+    
+
+    
+
+    <!-- Font awesome icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/static/css/syntax.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300italic,300,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/super-search.css">
+    <link rel="stylesheet" href="/static/css/thickbox.css">
+    <link rel="stylesheet" href="/static/css/projects.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+
+    
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-sm-3">
+        <div class="fixed-condition">
+          <a href="/"><img class="profile-avatar" src="/static/img/avatar.jpg" height="75px" width="75px" /></a>
+          <h1 class="author-name">Agus Makmun</h1>
+          
+            <div class="profile-about">
+              I am freelance developer. Currently doing more in backend, focused in Python and Django.
+            </div>
+          
+          <div class="social">
+            <ul>
+              
+                <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+              
+                <li><a href="https://twitter.com/agusmakmun6" target="_blank"><i class="fa fa-twitter"></i></a></li>
+              
+                <li><a href="https://www.linkedin.com/in/summonagus" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+              
+                <li><a href="#" target="_blank"><i class="fa fa-stack-exchange"></i></a></li>
+              
+                <li><a href="https://github.com/agusmakmun" target="_blank"><i class="fa fa-github"></i></a></li>
+              
+            </ul>
+          </div>
+          <div class="search" id="js-search">
+            <input type="text" placeholder="(sitemap)~$ type to search" class="search__input form-control" id="js-search__input">
+            <ul class="search__results" id="js-search__results"></ul>
+          </div>
+          <hr />
+          <ul class="sidebar-nav">
+            <strong>Navigation</strong>
+            <li><a href="/">Home</a></li>
+            
+              <li><a class="about" href="/about/">About Me</a></li>
+            
+              <li><a class="about" href="/projects/">My Projects</a></li>
+            
+              <li><a class="about" href="/feed.xml">XML Feed</a></li>
+            
+          </ul>
+        </div>
+        <!-- end /.fixed-condition -->
+      </div>
+      <div class="col-sm-8 col-offset-1 main-layout">
+        <header class="post-header">
+  <h1 class="post-title">Setup Django in apache2 Raspberry Pi</h1>
+</header>
+
+<span class="time">21 Apr 2016</span>
+
+  <span class="categories">
+    &raquo; <a href="/category/django">django</a>, <a href="/category/raspberry">raspberry</a>
+  </span>
+
+
+<div class="content">
+  <div class="post"><p>Setup Django in apache2 Raspberry Pi. Example in this configuration for monitoring the server raspberry pi using <a href="https://github.com/k3oni/pydash/">https://github.com/k3oni/pydash/</a>.</p>
+
+<p>As following this configurations <a href="https://github.com/k3oni/pydash/wiki/Install-pyDash#3-setup-apache">https://github.com/k3oni/pydash/wiki/Install-pyDash#3-setup-apache</a>, how to setup it.</p>
+
+<ul>
+  <li><strong>Edit in your:</strong></li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/etc/apache2/sites-available/pydash.conf
+</code></pre></div></div>
+
+<ul>
+  <li><strong>and then, add this configuration:</strong></li>
+</ul>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="no">Listen</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.27</span><span class="p">:</span><span class="mi">8001</span>
+
+<span class="o">&lt;</span><span class="no">VirtualHost</span> <span class="o">*</span><span class="p">:</span><span class="mi">8001</span><span class="o">&gt;</span>
+    <span class="no">ServerName</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.27</span><span class="p">:</span><span class="mi">80</span><span class="o">/</span><span class="n">pydash</span>
+    <span class="no">ServerAlias</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.27</span><span class="p">:</span><span class="mi">8001</span>
+    <span class="no">DocumentRoot</span> <span class="sr">/var/</span><span class="n">www</span><span class="o">/</span><span class="n">pydash</span><span class="o">/</span>
+    <span class="no">WSGIDaemonProcess</span> <span class="n">pydash</span> <span class="nb">display</span><span class="o">-</span><span class="nb">name</span><span class="o">=</span><span class="sx">%{GROUP}</span> <span class="n">python</span><span class="o">-</span><span class="n">path</span><span class="o">=</span><span class="sr">/var/</span><span class="n">www</span><span class="o">/</span><span class="n">pydash</span>
+    <span class="no">WSGIProcessGroup</span> <span class="n">pydash</span>
+    <span class="no">WSGIScriptAlias</span> <span class="sr">/ /</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">pydash</span><span class="o">/</span><span class="n">pydash</span><span class="o">/</span><span class="n">wsgi</span><span class="p">.</span><span class="nf">py</span>
+    <span class="no">Alias</span> <span class="sr">/static /</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">pydash</span><span class="o">/</span><span class="n">static</span><span class="o">/</span>
+    <span class="no">Alias</span> <span class="sr">/media /</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">pydash</span><span class="o">/</span><span class="n">media</span><span class="o">/</span>
+<span class="o">&lt;</span><span class="sr">/VirtualHost&gt;</span></code></pre></figure>
+
+<ul>
+  <li><strong>Now restart or reload your apache</strong></li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>service apache2 restart
+</code></pre></div></div>
+
+<p>And then, you can access from another client with IP: <code class="highlighter-rouge">192.168.1.27:8001</code></p>
+
+<blockquote>
+  <p>Thanks to: <em>Nabil Abdat</em></p>
+</blockquote>
+</div>
+  <div class="share-page">
+  <span style="float: left;">Share this on &rarr;&nbsp;&nbsp;</span>
+
+  <!-- Twitter -->
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="agusmakmun6">Tweet</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+  <!-- Google + -->
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!-- Facebook -->
+  <div class="fb-share-button" data-href="http://localhost:4000/django/raspberry/2016/04/21/setup-django-in-apache2-raspberry-pi.html" data-layout="button_count" style="position: relative; top: -8px; left: 3px;"></div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1749788565247320";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+</div>
+
+
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+            
+            <div class="panel-body">
+              <h4>Related Posts</h4>
+              <ul>
+            
+                <li class="relatedPost">
+                  <a href="http://localhost:4000/python/django/2016/12/29/top-10-python-libraries-of-2016.html">Top 10 Python libraries of 2016</a>
+                  
+                    (Categories: <a href="/category/python">python</a>, <a href="/category/django">django</a>)
+                  
+                </li>
+          
+          
+        
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+            
+                <li class="relatedPost">
+                  <a href="http://localhost:4000/python/django/2016/04/20/adding-broadcast-mail-to-all-users-registered-inside-django-admin.html">Adding BroadCast Mail to All Users Registered inside Django Admin</a>
+                  
+                    (Categories: <a href="/category/python">python</a>, <a href="/category/django">django</a>)
+                  
+                </li>
+          
+          
+        
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+            
+                <li class="relatedPost">
+                  <a href="http://localhost:4000/python/django/2016/04/20/custom-redirect-urls-django.html">Custom redirect urls django</a>
+                  
+                    (Categories: <a href="/category/python">python</a>, <a href="/category/django">django</a>)
+                  
+                </li>
+          
+          
+        
+      
+          
+      
+    
+  
+    
+      
+        
+          
+            
+                <li class="relatedPost">
+                  <a href="http://localhost:4000/django/2016/04/19/replace-email-backend-gmail-to-postmarkapp-for-django.html">Replace backend gmail to Postmarkapp for Django</a>
+                  
+                    (Categories: <a href="/category/django">django</a>)
+                  
+                </li>
+          
+          
+        
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+            
+                <li class="relatedPost">
+                  <a href="http://localhost:4000/python/django/2016/04/19/email-backend-with-smtp-gmail.html">Email BackEnd with SMTP Gmail</a>
+                  
+                    (Categories: <a href="/category/python">python</a>, <a href="/category/django">django</a>)
+                  
+                </li>
+          
+          
+        
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+  
+  
+  </ul>
+</div>
+
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/python/django/2016/04/20/adding-broadcast-mail-to-all-users-registered-inside-django-admin.html">&laquo; Adding BroadCast Mail to All Users Registered inside Django Admin</a>
+  
+  
+    <a class="next" href="/others/2016/04/26/javascript-validator-for-input-number.html">Javascript Validator for Input Number &raquo;</a>
+  
+</div>
+
+<div class="disqus-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* <![CDATA[ */
+    var disqus_shortname = "stackproblems";
+    var disqus_identifier = "http://localhost:4000_Setup Django in apache2 Raspberry Pi";
+    var disqus_title = "Setup Django in apache2 Raspberry Pi";
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    /* ]]> */
+  </script>
+</div>
+
+        <footer>
+          &copy; Agus Makmun
+          
+            - <a href="https://github.com/agusmakmun">https://github.com/agusmakmun</a> - Powered by Jekyll.
+          
+          <div class="btn-github" style="float:right;">
+            <iframe src="https://ghbtns.com/github-btn.html?user=agusmakmun&repo=agusmakmun.github.io&type=star&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
+            <iframe src="https://ghbtns.com/github-btn.html?user=agusmakmun&repo=agusmakmun.github.io&type=fork&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
+          </div>
+        </footer>
+      </div>
+      <!-- end /.col-sm-8 -->
+    </div>
+    <!-- end /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/super-search.js"></script>
+    <script src="/static/js/thickbox-compressed.js"></script>
+    <script src="/static/js/projects.js"></script>
+  </body>
+</html>
+

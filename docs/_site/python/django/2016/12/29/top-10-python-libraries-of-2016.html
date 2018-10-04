@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/static/img/favicon.ico" />
+    <title>Top 10 Python libraries of 2016 - Stack Problems</title>
+    <meta name="author" content="Agus Makmun" />
+    <meta name="description" content="Top 10 Python libraries of 2016" />
+    <meta name="keywords" content="Top 10 Python libraries of 2016, Stack Problems, python, django" />
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml">
+    <meta content="1749788565247320" property="fb:app_id">
+    <meta content="Stack Problems" property="og:site_name">
+
+    
+
+    
+      <meta content="Top 10 Python libraries of 2016" property="og:title">
+      <meta content="article" property="og:type">
+    
+
+    
+      <meta content="My Personal Stack Problems" property="og:description">
+    
+
+    
+      <meta content="http://localhost:4000/python/django/2016/12/29/top-10-python-libraries-of-2016.html" property="og:url">
+    
+
+    
+      <meta content="2016-12-29T20:34:10+09:00" property="article:published_time">
+      <meta content="http://localhost:4000/about/" property="article:author">
+    
+
+    
+      <meta content="http://localhost:4000/static/img/avatar.jpg" property="og:image">
+    
+
+    
+      
+        <meta content="python" property="article:section">
+      
+    
+
+    
+      
+    
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@agusmakmun6">
+    <meta name="twitter:creator" content="@agusmakmun6">
+
+    
+      <meta name="twitter:title" content="Top 10 Python libraries of 2016">
+    
+
+    
+      <meta name="twitter:url" content="http://localhost:4000/python/django/2016/12/29/top-10-python-libraries-of-2016.html">
+    
+
+    
+      <meta name="twitter:description" content="My Personal Stack Problems">
+    
+
+    
+
+    <!-- Font awesome icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <!-- syntax highlighting CSS -->
+    <link rel="stylesheet" href="/static/css/syntax.css">
+    <!-- Bootstrap core CSS -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,300italic,300,400italic,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/super-search.css">
+    <link rel="stylesheet" href="/static/css/thickbox.css">
+    <link rel="stylesheet" href="/static/css/projects.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+
+    
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-sm-3">
+        <div class="fixed-condition">
+          <a href="/"><img class="profile-avatar" src="/static/img/avatar.jpg" height="75px" width="75px" /></a>
+          <h1 class="author-name">Agus Makmun</h1>
+          
+            <div class="profile-about">
+              I am freelance developer. Currently doing more in backend, focused in Python and Django.
+            </div>
+          
+          <div class="social">
+            <ul>
+              
+                <li><a href="#" target="_blank"><i class="fa fa-facebook"></i></a></li>
+              
+                <li><a href="https://twitter.com/agusmakmun6" target="_blank"><i class="fa fa-twitter"></i></a></li>
+              
+                <li><a href="https://www.linkedin.com/in/summonagus" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+              
+                <li><a href="#" target="_blank"><i class="fa fa-stack-exchange"></i></a></li>
+              
+                <li><a href="https://github.com/agusmakmun" target="_blank"><i class="fa fa-github"></i></a></li>
+              
+            </ul>
+          </div>
+          <div class="search" id="js-search">
+            <input type="text" placeholder="(sitemap)~$ type to search" class="search__input form-control" id="js-search__input">
+            <ul class="search__results" id="js-search__results"></ul>
+          </div>
+          <hr />
+          <ul class="sidebar-nav">
+            <strong>Navigation</strong>
+            <li><a href="/">Home</a></li>
+            
+              <li><a class="about" href="/about/">About Me</a></li>
+            
+              <li><a class="about" href="/projects/">My Projects</a></li>
+            
+              <li><a class="about" href="/feed.xml">XML Feed</a></li>
+            
+          </ul>
+        </div>
+        <!-- end /.fixed-condition -->
+      </div>
+      <div class="col-sm-8 col-offset-1 main-layout">
+        <header class="post-header">
+  <h1 class="post-title">Top 10 Python libraries of 2016</h1>
+</header>
+
+<span class="time">29 Dec 2016</span>
+
+  <span class="categories">
+    &raquo; <a href="/category/python">python</a>, <a href="/category/django">django</a>
+  </span>
+
+
+<div class="content">
+  <div class="post"><p>Last year, we did a recap with what we thought were the <a href="https://tryolabs.com/blog/2015/12/15/top-10-python-libraries-of-2015/">best Python libraries of 2015</a>, which was widely shared within the Python community (see post in<a href="https://www.reddit.com/r/Python/comments/3wyiuv/top_10_python_libraries_of_2015/">r/Python</a>). A year has gone by, and again it is time to give due credit for the awesome work that has been done by the <strong>open source community</strong> this year.</p>
+
+<p>Again, we try to avoid most established choices such as Django, Flask, etc. that are kind of standard nowadays. Also, some of these libraries date prior to 2016, but either they had an explosion in popularity this year or we think they are great enough to deserve the spot. Here we go!</p>
+
+<h2 id="1-zappa">1. <a href="https://www.zappa.io/">Zappa</a></h2>
+
+<p>Since the release of <a href="https://aws.amazon.com/lambda/details/">AWS Lambda</a> (and <a href="https://cloud.google.com/functions/docs/">others</a> that <a href="https://azure.microsoft.com/en-us/services/functions/">have</a> <a href="https://www.ibm.com/cloud-computing/bluemix/openwhisk">followed</a>), all the rage has been about <a href="http://martinfowler.com/articles/serverless.html">serverless architectures</a>. These allow microservices to be deployed in the cloud, in a fully managed environment where one doesn’t have to care about managing any server, but is assigned stateless, ephemeral <em>computing containers</em> that are fully managed by a provider. With this paradigm, events (such as a traffic spike) can trigger the execution of more of these <em>containers</em> and therefore give the possibility to handle “infinite” horizontal scaling.</p>
+
+<p>Zappa is <strong>the serverless framework for Python</strong>, although (at least for the moment) it only has support for AWS Lambda and AWS API Gateway. It makes building so-architectured apps very simple, freeing you from most of the tedious setup you would have to do through the AWS Console or API, and has all sort of commands to ease deployment and managing different environments.</p>
+
+<h2 id="2-sanic--uvloop">2. <a href="https://github.com/channelcat/sanic">Sanic</a> + <a href="https://magic.io/blog/uvloop-blazing-fast-python-networking/">uvloop</a></h2>
+
+<p>Who said Python couldn’t be fast? Apart from competing for the <a href="http://knowyourmeme.com/memes/sanic-hegehog">best name</a> of a software library ever, Sanic also competes for the fastest Python web framework ever, and appears to be the winner by a clear margin. It is a Flask-like Python 3.5+ web server that is designed for speed. Another library, <em>uvloop</em>, is an ultra fast drop-in replacement for <em>asyncio</em>’s event loop that uses <a href="https://github.com/libuv/libuv">libuv</a> under the hood. Together, these two things make a great combination!</p>
+
+<p>According to the Sanic author’s <a href="https://github.com/channelcat/sanic#benchmarks">benchmark</a>, <em>uvloop</em> could power this beast to handle more than <strong>33k requests/s</strong> which is just insane (and faster than <em>node.js</em>). Your code can benefit from the new <em>async/await</em> syntax so it will look neat too; besides we love the Flask-style API. Make sure to give Sanic a try, and if you are using <em>asyncio</em>, you can surely benefit from <em>uvloop</em> with very little change in your code!</p>
+
+<h2 id="3-asyncpg">3. <a href="https://github.com/MagicStack/asyncpg">asyncpg</a></h2>
+
+<p>In line with recent developments for the <em>asyncio</em> framework, the folks from<a href="https://magic.io/">MagicStack</a> bring us this efficient asynchronous (currently CPython 3.5 only) database interface library designed specifically for PostgreSQL. It has zero dependencies, meaning there is no need to have <em>libpq</em> installed. In contrast with <em>psycopg2</em> (the most popular PostgreSQL adapter for Python) which exchanges data with the database server in text format, <em>asyncpg</em> implements PostgreSQL <strong>binary I/O protocol</strong>, which not only allows support for generic types but also comes with numerous performance benefits.</p>
+
+<p>The benchmarks are clear: <em>asyncpg</em> is on average, at least <strong>3x faster</strong> than <em>psycopg2</em> (or <em>aiopg</em>), and faster than the <em>node.js</em> and <em>Go</em> implementations.</p>
+
+<h2 id="4-boto3">4. <a href="https://github.com/boto/boto3">boto3</a></h2>
+
+<p>If you have your infrastructure on AWS or otherwise make use of their services (such as S3), you should be very happy that <a href="https://github.com/boto/boto">boto</a>, the Python interface for AWS API, got a completely rewrite from the ground up. The great thing is that you don’t need to migrate your app all at once: you can use <em>boto3</em> and <em>boto</em> (2) <em>at the same time</em>; for example using boto3 only for new parts of your application.</p>
+
+<p>The new implementation is much <strong>more consistent</strong> between different services, and since it uses a data-driven approach to generate classes at runtime from JSON description files, it will always get fast updates. No more lagging behind new Amazon API features, move to <em>boto3</em>!</p>
+
+<h2 id="5-tensorflow">5. <a href="https://www.tensorflow.org/">TensorFlow</a></h2>
+
+<p>Do we even need an introduction here? Since it was released by Google in November 2015, this library has gained a huge momentum and has become the #1 trendiest GitHub Python repository. In case you have been living under a rock for the past year, TensorFlow is a library for <strong>numerical computation</strong> using data flow graphs, which can run over GPU or CPU.</p>
+
+<p>We have quickly witnessed it become a trend in the Machine Learning community (especially Deep Learning, see our post on <a href="https://tryolabs.com/blog/2016/11/18/10-main-takeaways-from-mlconf/">10 main takeaways from MLconf</a>), not only growing its uses in research but also being widely used in production applications. If you are doing Deep Learning and want to use it through a higher level interface, you can try using it as a backend for <a href="https://keras.io/">Keras</a> (which made it to last years post) or the newer <a href="https://github.com/tensorflow/tensorflow/tree/master/tensorflow/contrib/slim">TensorFlow-Slim</a>.</p>
+
+<h2 id="6-gym--universe">6. <a href="https://gym.openai.com/">gym</a> + <a href="https://universe.openai.com/">universe</a></h2>
+
+<p>If you are into AI, you surely have heard about the <a href="https://openai.com/">OpenAI</a> non-profit artificial intelligence research company (backed by Elon Musk et al.). The researchers have open sourced some Python code this year! Gym is a toolkit for developing and comparing <a href="https://en.wikipedia.org/wiki/Reinforcement_learning">reinforcement learning</a> algorithms. It consists of an open-source library with a collection of test problems (environments) that can be used to test reinforcement learning algorithms, and a site and API that allows to compare the performance of trained algorithms (agents). Since it doesn’t care about the implementation of the agent, you can build them with the computation library of your choice: bare numpy, TensorFlow, Theano, etc.</p>
+
+<p>We also have the recently released <em>universe</em>, a software platform for researching into <strong>general intelligence</strong> across games, websites and other applications. This fits perfectly with <em>gym</em>, since it allows any real-world application to be turned into a <em>gym</em> environment. Researchers hope that this limitless possibility will <strong>accelerate research</strong> into smarter agents that can solve general purpose tasks.</p>
+
+<h2 id="7-bokeh">7. <a href="http://bokeh.pydata.org/">Bokeh</a></h2>
+
+<p>You may be familiar with some of the libraries Python has to offer for data visualization; the most popular of which are <a href="http://matplotlib.org/">matplotlib</a> and <a href="http://seaborn.pydata.org/">seaborn</a>. Bokeh, however, is created for <strong>interactive visualization</strong>, and targets modern web browsers for the presentation. This means Bokeh can create a plot which lets you_explore_ the data from a web browser. The great thing is that it integrates tightly with <a href="https://jupyter.org/">Jupyter Notebooks</a>, so you can use it with your probably go-to tool for your research. There is also an optional server component, <code class="highlighter-rouge">bokeh-server</code>, with many powerful capabilities like server-side downsampling of large dataset (no more slow network tranfers/browser!), streaming data, transformations, etc.</p>
+
+<p>Make sure to check the <a href="http://bokeh.pydata.org/en/latest/docs/gallery.html">gallery</a> for examples of what you can create. They look awesome!</p>
+
+<h2 id="8-blaze">8. <a href="https://blaze.readthedocs.io/en/latest/index.html">Blaze</a></h2>
+
+<p>Sometimes, you want to run <strong>analytics</strong> over a dataset too big to fit your computer’s RAM. If you cannot rely on numpy or Pandas, you usually turn to other tools like PostgreSQL, MongoDB, Hadoop, Spark, or many others. Depending on the use case, one or more of these tools can make sense, each with their own strengths and weaknesses. The problem? There is a big overhead here because you need to learn how each of these systems work and how to insert data in the proper form.</p>
+
+<p>Blaze provides a <strong>uniform interface</strong> that abstracts you away from several database technologies. At the core, the library provides a way to <strong>express computations</strong>. Blaze itself doesn’t actually do any computation: it just knows how to instruct a specific <em>backend</em> who will be in charge of performing it. There is so much more to Blaze (thus the ecosystem), as libraries that have come out of its development. For example, <a href="http://dask.pydata.org/en/latest/">Dask</a> implements a drop-in replacement for NumPy array that can handle content larger than memory and leverage multiple cores, and also comes with dynamic task scheduling. Interesting stuff.</p>
+
+<h2 id="9-arrow">9. <a href="https://github.com/crsmithdev/arrow">arrow</a></h2>
+
+<p>There is a famous saying that there are only two hard problems in Computer Science: cache invalidation and naming things. I think the saying is clearly missing one thing: <strong>managing datetimes</strong>. If you have ever tried to do that in Python, you will know that the standard library has a gazillion modules and types: <code class="highlighter-rouge">datetime</code>,<code class="highlighter-rouge">date</code>, <code class="highlighter-rouge">calendar</code>, <code class="highlighter-rouge">tzinfo</code>, <code class="highlighter-rouge">timedelta</code>, <code class="highlighter-rouge">relativedelta</code>, <code class="highlighter-rouge">pytz</code>, etc. Worse, it is timezone naive by default.</p>
+
+<p>Arrow is “datetime for humans”, offering a sensible approach to creating, manipulating, formatting and converting dates, times, and timestamps. It is a<strong>replacement</strong> for the <code class="highlighter-rouge">datetime</code> type that supports Python 2 or 3, and provides a much nicer interface as well as filling the gaps with new functionality (such as<code class="highlighter-rouge">humanize</code>). Even if you don’t really <em>need</em> arrow, using it can greatly reduce the boilerplate in your code.</p>
+
+<h2 id="10-hug">10. <a href="http://www.hug.rest/">hug</a></h2>
+
+<p>Expose your internal API externally, drastically simplifying <strong>Python API</strong>development. Hug is a next-generation Python 3 (only) library that will provide you with the cleanest way to create HTTP REST APIs in Python. It is not a web framework per se (although that is a function it performs exceptionally well), but only focuses on exposing idiomatically correct and standard internal Python APIs externally. The idea is simple: you define logic and structure once, and you can expose your API through <strong>multiple means</strong>. Currently, it supports exposing REST API or command line interface.</p>
+
+<p>You can use type annotations that let <em>hug</em> not only generate <strong>documentation</strong> for your API but also provide with <strong>validation</strong> and clean error messages that will make your life (and your API user’s) a lot easier. Hug is built on <a href="https://github.com/falconry/falcon">Falcon’s</a> high performance HTTP library, which means you can deploy this to production using any wsgi-compatible server such as <a href="http://gunicorn.org/">gunicorn</a>.</p>
+
+<p>Follow the discussion of this post on: <a href="https://www.reddit.com/r/Python/comments/5jf64k/top_10_python_libraries_of_2016/">Reddit</a></p>
+
+<hr />
+
+<p><em>Original source:</em> <a href="https://tryolabs.com/blog/2016/12/20/top-10-python-libraries-of-2016/"><em>https://tryolabs.com/blog/2016/12/20/top-10-python…</em></a></p>
+</div>
+  <div class="share-page">
+  <span style="float: left;">Share this on &rarr;&nbsp;&nbsp;</span>
+
+  <!-- Twitter -->
+  <a href="https://twitter.com/share" class="twitter-share-button" data-via="agusmakmun6">Tweet</a>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+  <!-- Google + -->
+  <div class="g-plus" data-action="share" data-annotation="bubble"></div>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+  <!-- Facebook -->
+  <div class="fb-share-button" data-href="http://localhost:4000/python/django/2016/12/29/top-10-python-libraries-of-2016.html" data-layout="button_count" style="position: relative; top: -8px; left: 3px;"></div>
+</div>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1749788565247320";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+</div>
+
+
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+            
+            <div class="panel-body">
+              <h4>Related Posts</h4>
+              <ul>
+            
+                <li class="relatedPost">
+                  <a href="http://localhost:4000/python/codefights/2016/06/11/get-month-name-cf.html">get Month Name [CF]</a>
+                  
+                    (Categories: <a href="/category/python">python</a>, <a href="/category/codefights">codefights</a>)
+                  
+                </li>
+          
+          
+        
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+            
+                <li class="relatedPost">
+                  <a href="http://localhost:4000/python/codefights/2016/06/11/find-the-number-of-even-digits-in-the-given-integer-cf.html">Find the number of even digits in the given integer [CF]</a>
+                  
+                    (Categories: <a href="/category/python">python</a>, <a href="/category/codefights">codefights</a>)
+                  
+                </li>
+          
+          
+        
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+            
+                <li class="relatedPost">
+                  <a href="http://localhost:4000/python/codefights/2016/06/11/find-substrings-for-line-encoding-cf.html">Find Substrings for line Encoding [CF]</a>
+                  
+                    (Categories: <a href="/category/python">python</a>, <a href="/category/codefights">codefights</a>)
+                  
+                </li>
+          
+          
+        
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+            
+                <li class="relatedPost">
+                  <a href="http://localhost:4000/python/codefights/2016/05/22/censorthis-censor-the-words-cf.html">CensorThis - Censor the words [CF]</a>
+                  
+                    (Categories: <a href="/category/python">python</a>, <a href="/category/codefights">codefights</a>)
+                  
+                </li>
+          
+          
+        
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+            
+                <li class="relatedPost">
+                  <a href="http://localhost:4000/python/codefights/2016/05/22/notpaired-cf.html">notPaired [CF]</a>
+                  
+                    (Categories: <a href="/category/python">python</a>, <a href="/category/codefights">codefights</a>)
+                  
+                </li>
+          
+          
+        
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+            
+                <li class="relatedPost">
+                  <a href="http://localhost:4000/python/codefights/2016/05/22/reverse-bit-cf.html">Reverse Bit [CF]</a>
+                  
+                    (Categories: <a href="/category/python">python</a>, <a href="/category/codefights">codefights</a>)
+                  
+                </li>
+          
+          
+        
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+  
+    
+      
+        
+          
+      
+          
+      
+    
+  
+  
+  </ul>
+</div>
+
+
+<div class="PageNavigation">
+  
+    <a class="prev" href="/python/codefights/2016/06/11/get-month-name-cf.html">&laquo; get Month Name [CF]</a>
+  
+  
+</div>
+
+<div class="disqus-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* <![CDATA[ */
+    var disqus_shortname = "stackproblems";
+    var disqus_identifier = "http://localhost:4000_Top 10 Python libraries of 2016";
+    var disqus_title = "Top 10 Python libraries of 2016";
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    /* ]]> */
+  </script>
+</div>
+
+        <footer>
+          &copy; Agus Makmun
+          
+            - <a href="https://github.com/agusmakmun">https://github.com/agusmakmun</a> - Powered by Jekyll.
+          
+          <div class="btn-github" style="float:right;">
+            <iframe src="https://ghbtns.com/github-btn.html?user=agusmakmun&repo=agusmakmun.github.io&type=star&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
+            <iframe src="https://ghbtns.com/github-btn.html?user=agusmakmun&repo=agusmakmun.github.io&type=fork&count=true" frameborder="0" scrolling="0" width="85" height="20px"></iframe>
+          </div>
+        </footer>
+      </div>
+      <!-- end /.col-sm-8 -->
+    </div>
+    <!-- end /.container -->
+
+    <!-- Bootstrap core JavaScript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/super-search.js"></script>
+    <script src="/static/js/thickbox-compressed.js"></script>
+    <script src="/static/js/projects.js"></script>
+  </body>
+</html>
+
