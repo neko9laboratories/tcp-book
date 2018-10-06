@@ -1,6 +1,6 @@
 # サポートページ
 
-xxxのサポートページです．
+xxxのサポートページです．当面はREADME.mdで書きますが，ボリュームが大きくなったら[Readthedocs](https://readthedocs.org/)に移行したい（使ってみたい）．
 
 ## 環境構築
 
@@ -10,9 +10,22 @@ xxxのサポートページです．
 
 ### WireShark
 
-### Netowrk simulator 3 
+### Network simulator 3 
 
 ### Python3
+
+## ローカルマシンで環境構築
+
+VirtualBoxを使わずに，読者のローカルマシンで実験するための手順を書く．
+
+### WireShark
+
+WireSharkのインストール．
+WindowsやMacでどのようにTCPアルゴリズムを変更するかも書く？
+
+### Network simulator 3
+
+ns-3のインストール．
 
 ## 正誤表
 
