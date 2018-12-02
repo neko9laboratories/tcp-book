@@ -1,0 +1,4 @@
+open 192.168.33.20
+user vagrant vagrant
+prompt
+put tempfile
