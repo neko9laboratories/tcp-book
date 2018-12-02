@@ -1,2 +1,2 @@
-vagrant/*/*.log
-vagrant/*/.vagrant
+*/vagrant/*.log
+*/vagrant/.vagrant
