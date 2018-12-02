@@ -1,6 +1,6 @@
 # サポートページ
 
-xxxのサポートページです．当面はREADME.mdで書きますが，ボリュームが大きくなったら[Readthedocs](https://readthedocs.org/)に移行したい（使ってみたい）．
+xxxのサポートページです．当面はREADME.mdで書きますが，ボリュームが大きくなったらGitHub Pagesで書きたい．
 
 ## 環境構築
 
@@ -8,11 +8,7 @@ xxxのサポートページです．当面はREADME.mdで書きますが，ボ�
 
 ### VirtualBox
 
-### WireShark
-
-### Network simulator 3 
-
-### Python3
+### Vagrant 
 
 ## ローカルマシンで環境構築
 
