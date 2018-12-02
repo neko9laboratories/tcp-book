@@ -4,24 +4,35 @@ xxxのサポートページです．当面はREADME.mdで書きますが，ボ�
 
 ## 環境構築
 
-### 推奨スペック
+### 環境
+
+以下の環境で動作確認済みです．
 
 ### VirtualBox
 
-### Vagrant 
+### Vagrant
 
-## ローカルマシンで環境構築
+## 4_algorithms
 
-VirtualBoxを使わずに，読者のローカルマシンで実験するための手順を書く．
+このレポジトリをクローンしてください．
 
 ### WireShark
 
-WireSharkのインストール．
-WindowsやMacでどのようにTCPアルゴリズムを変更するかも書く？
+WireSharkの`vagrant`ディレクトリに移動し，`vagrant up`してください．
 
-### Network simulator 3
+```bash
+cd tcp-book/4_algorithms/wireshark/vagrant
+vagrant up
+```
 
-ns-3のインストール．
+### ns-3
+
+WireSharkの`vagrant`ディレクトリに移動し，`vagrant up`してください．
+
+```bash
+cd tcp-book/4_algorithms/ns3/vagrant
+vagrant up
+```
 
 ## 正誤表
 
