@@ -1,2 +1,3 @@
 */vagrant/*.log
 */vagrant/.vagrant
+ns3/tcp-book/*
