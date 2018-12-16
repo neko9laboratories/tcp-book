@@ -1,0 +1,54 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "ubuntu/xenial64"
+
+  # 仮想マシン上で動作するWiresharkのGUIを直接使うため，x forwardingする．
+  # Ryoma Yasunaga，2018/12/1
+  config.ssh.forward_x11 = true
+
+  # 各種ソフトウェアのダウンロード．
+  config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get upgrade -y
+
+    # x11 forwarding関連．
+    apt-get install x11-apps -y
+
+    # WireShark．対話型を回避するために細かい設定が必要．
+    DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install wireshark
+    # 一般ユーザも使えるよう，dumpcapの設定を変更する．
+    setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
+
+    # FTPサーバ．外部から書き込み可能な設定に変更．
+    apt-get install vsftpd -y
+    echo 'write_enable=YES' >> /etc/vsftpd.conf
+
+    # FTPで転送する100MBのダミーファイル．
+    dd if=/dev/zero of=tempfile bs=1M count=100
+    # FTP先で上書きできるように権限変更．
+    chmod 777 tempfile
+
+    # 輻輳制御アルゴリズムをrenoに変更．
+    sysctl -w net.ipv4.tcp_congestion_control=reno
+　
+    # neko9レポジトリから必要なファイルをダウンロードし，~/srcに保存．
+    # reload --provisionのときにエラーがで内容に，毎回初期化する．
+    rm -r /home/vagrant/src
+    git clone https://github.com/neko9laboratories/tcp-book.git /home/vagrant/src/
+
+  SHELL
+
+  config.vm.define :guest1 do | guest1 |
+    guest1.vm.hostname = "guest1"
+    guest1.vm.network :private_network, ip: "192.168.33.10", virtualbox__intnet: "intnet"
+  end
+
+  config.vm.define :guest2 do | guest2 |
+    guest2.vm.hostname = "guest2"
+    guest2.vm.network :private_network, ip: "192.168.33.20", virtualbox__intnet: "intnet"
+  end
+
+end

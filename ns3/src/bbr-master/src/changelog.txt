@@ -1,0 +1,37 @@
+# Changelog
+
+## BBR' (in tcp-bbr.h)
+
+v1.7 - Added PROBE_RTT_MIN_TIME as a constant for easier adjustments.
+       Changed bbr::MIN_CWND to be in units of bytes for clarity.
+       Modified PROBE_RTT so controls pacing rate in Send() since
+          TCP_PACING may have backlogged packets.
+
+v1.6 - Updated cwnd response to packet loss (RTO and Fast Recovery).
+       Changed BW estimates to ignore retransmission sequences.
+       Moved most NS_LOG messages from INFO to LOGIC.
+
+v1.5 - Changed BW window culling to use packet-timed round trip time
+       instead of wall-clock round trip time.  Wall-clock remains a
+       config option.
+
+v1.4 - Updated BBR' PktsAcked() to ignore acks when sending time 
+       unknown (e.g., during retransmission sequence).
+
+v1.3 - Re-worked RTT and BW windows to use actual times.
+       Added configuration option for pacing/non-pacing/tcp-pacing.
+     
+v1.2 - Re-factored state code to use FSM for BBR states.
+
+v1.1 - Added PROBE_RTT state.
+
+v1.0 - Initial version.
+
+
+## TCP Pacing (in tcp-socket-base.h)
+
+v1.1 - Fixed bug in TcpSocketBase to clear any remaining packets
+       in pacing queue when RTO.
+
+v1.0 - Initial split with version numbers for TCP pacing and BBR'.
+
