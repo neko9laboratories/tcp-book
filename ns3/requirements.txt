@@ -15,7 +15,6 @@ ipywidgets==7.4.2
 jedi==0.13.1
 Jinja2==2.10
 jsonschema==2.6.0
-jupyter==1.0.0
 jupyter-client==5.2.3
 jupyter-console==6.0.0
 jupyter-core==4.4.0
@@ -51,6 +50,7 @@ six==1.11.0
 terminado==0.8.1
 testpath==0.4.2
 tornado==5.1.1
+tqdm==4.28.1
 traitlets==4.3.2
 urllib3==1.24.1
 wcwidth==0.1.7

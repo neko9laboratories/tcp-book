@@ -30,7 +30,6 @@ Vagrant.configure("2") do |config|
     ./waf -d debug --enable-examples --enable-tests configure
     ./waf
     ./test.py
-    sudo chmod -R 777 *
     cd
 
     # neko9レポジトリから必要なファイルをダウンロードし，~/srcに保存．
@@ -46,6 +45,7 @@ Vagrant.configure("2") do |config|
     cp /home/vagrant/src/ns3/requirements.txt /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
 
     cd /home/vagrant/ns3/ns-allinone-3.27/ns-3.27
+    sudo chmod -R 777 *
     ./waf configure
 
     # Python関連のインストール．
