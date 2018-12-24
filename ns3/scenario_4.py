@@ -3,36 +3,41 @@
 
 import os
 import subprocess
-import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from tqdm import tqdm
 
 sns.set_style(style='ticks')
+plt.rcParams['font.size'] = 14
 
 # 計算結果を出力するディレクトリ名．
-output_path = 'data/chapter4/'
-# 作図結果を保存するディレクトリ名．
-save_path = '/home/vagrant/shared/'
+save_path = 'data/chapter4/'
+# ホストOSとの共有ディレクトリ名．
+shared_path = '/home/vagrant/shared/'
 # TCPアルゴリズム一覧．
 algorithms = [
     'TcpNewReno', 'TcpHybla', 'TcpHighSpeed', 'TcpHtcp',
     'TcpVegas', 'TcpScalable', 'TcpVeno', 'TcpBic', 'TcpYeah',
     'TcpIllinois', 'TcpWestwood', 'TcpLedbat']
 
+# 保存用ディレクトリを作成．
+if not os.path.exists(save_path):
+    os.mkdir(save_path)
 
+
+# コマンドライン引数を追加したコマンドを作成する関数
 def make_command(
-    algorithm, prefix_name, duration,
-    bandwidth=None, delay=None,
-    access_bandwidth=None, access_delay=None,
-    data=None, mtu=None, num_flows=None, flow_monitor=None,
-    pcap_tracing=None):
+        algorithm=None, prefix_name=None, tracing=None,
+        duration=None, bandwidth=None, delay=None,
+        access_bandwidth=None, access_delay=None,
+        data=None, mtu=None, num_flows=None,
+        flow_monitor=None, pcap_tracing=None):
 
     """
-    コマンドライン引数を追加したコマンドを作成する関数
     - algorithm: 輻輳制御アルゴリズム名．
     - prefix_name: 出力するファイルのプレフィックス名．pwdからの相対パスで表す．
+    - tracing: トレーシング結果を行うか否か．
     - duration: シミュレーション時間[s]．
     - bandwidth: ボトルネック部分の帯域．例：'2Mbps'
     - delay: ボトルネック部分の遅延．例：'0.01ms'
@@ -42,11 +47,14 @@ def make_command(
     """
 
     cmd = './waf --run "chapter4-base'
-    cmd += ' --transport_prot={}'.format(algorithm)
-    cmd += ' --prefix_name={}'.format(prefix_name)
-    cmd += ' --tracing=True'
-    cmd += ' --duration={}'.format(duration)
-
+    if algorithm:
+        cmd += ' --transport_prot={}'.format(algorithm)
+    if prefix_name:
+        cmd += ' --prefix_name={}'.format(prefix_name)
+    if tracing:
+        cmd += ' --tracing={}'.format(tracing)
+    if duration:
+        cmd += ' --duration={}'.format(duration)
     if bandwidth:
         cmd += ' --bandwidth={}'.format(bandwidth)
     if delay:
@@ -80,7 +88,7 @@ def read_data(prefix_name, metric, duration):
 
 
 def plot_metric(
-    metric, x_max, y_label, y_deno=1, x_ticks=False):
+        metric, x_max, y_label, y_deno=1, x_ticks=False):
 
     """
     metricの時系列変化をプロットする関数．
@@ -101,7 +109,7 @@ def plot_metric(
 
 
 def plot_cong_state(
-    cong_state, x_max, y_label, x_ticks=False):
+        cong_state, x_max, y_label, x_ticks=False):
     """
     cong_stateの時系列変化をプロットする関数．
     """
@@ -109,7 +117,7 @@ def plot_cong_state(
     # 2:rcwは今回の分析対象外なので，
     # 3，4を一つ前にずらす．
     new_state = {
-        0:0 , 1:1, 3:2, 4:3}
+        0: 0, 1: 1, 3: 2, 4: 3}
 
     # 最初はOpen状態．
     plt.fill_between(
@@ -121,7 +129,7 @@ def plot_cong_state(
     # 各輻輳状態ごとに該当秒数を塗りつぶす．
     for target_state in range(4):
         for sec, state in cong_state.values:
-            if new_state[state]==target_state:
+            if new_state[state] == target_state:
                 color = 'gray'
             else:
                 color = 'white'
@@ -150,13 +158,9 @@ def plot_cong_state(
         plt.xticks([])
 
 
+# algorithmのcwnd，ssth，ack，rtt，cong-stateをプロットする関数．
 def plot_algorithm(algo, duration, save_path):
     path = '{}{}/'.format(save_path, algo)
-    """
-    algorithmのcwnd，ssth，ack，rtt，cong-stateをプロットする関数．
-    """
-
-    mss=340
 
     # データの読み込み
     cwnd = read_data(path, 'cwnd', duration)
@@ -165,49 +169,58 @@ def plot_algorithm(algo, duration, save_path):
     rtt = read_data(path, 'rtt', duration)
     cong_state = read_data(path, 'cong-state', duration)
 
-    # 描画．
+    # 描画
     plt.figure(figsize=(12, 12))
     plt.subplot(5, 1, 1)
-    plot_metric(cwnd, duration, 'cwnd[segment]', mss)
+    plot_metric(cwnd, duration, 'cwnd[byte]', 1)
     plt.subplot(5, 1, 2)
-    plot_metric(ssth, duration, 'ssth[segment]', mss)
+    plot_metric(ssth, duration, 'ssth[byte]', 1)
     plt.subplot(5, 1, 3)
-    plot_metric(ack, duration, 'ack[segment]', mss)
+    plot_metric(ack, duration, 'ack[byte]', 1)
     plt.subplot(5, 1, 4)
     plot_metric(rtt, duration, 'rtt[s]')
     plt.subplot(5, 1, 5)
-
     # 一番下のプロットのみx軸を描画．
     plot_cong_state(
         cong_state, duration, 'cong-state',
         x_ticks=True)
 
     # 保存
-    plt.savefig('{}{}_duration_{}s.png'.format(
-        save_path, algo.lower(), duration))
+    plt.savefig('{}04_{}.png'.format(
+        save_path, algo.lower()))
 
 
+# ns-3コマンドを実行して，結果をプロットする関数．
 def execute_and_plot(
-    algorithm, duration, save_path,
-    bandwidth=None, delay=None,
-    access_bandwidth=None, access_delay=None,
-    data=None, mtu=None, num_flows=None, flow_monitor=None,
-    pcap_tracing=None):
+        algo, duration, save_path,
+        bandwidth=None, delay=None, access_bandwidth=None,
+        access_delay=None, data=None, mtu=None,
+        num_flows=None, flow_monitor=None,
+        pcap_tracing=None):
 
-    path = '{}{}/'.format(save_path, algorithm)
+    # 保存用ディレクトリを作成．
+    path = '{}{}/'.format(save_path, algo)
     if not os.path.exists(path):
         os.mkdir(path)
 
     cmd = make_command(
-        algorithm=algorithm, duration=duration,
-        prefix_name=path)
+        algorithm=algo, tracing=True,
+        duration=duration, prefix_name=path,
+        bandwidth=bandwidth, delay=delay,
+        access_bandwidth=access_bandwidth,
+        access_delay=access_delay,
+        data=data, mtu=mtu, num_flows=num_flows,
+        flow_monitor=flow_monitor,
+        pcap_tracing=pcap_tracing)
 
-    plot_algorithm(algorithm, duration, save_path)
+    subprocess.check_output(cmd, shell=True).decode()
+    plot_algorithm(algo, duration, save_path)
 
 
 def main():
-    pass
+    for algo in tqdm(algorithms, desc='Algotirhms'):
+        execute_and_plot(algo, 20, save_path)
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     main()
