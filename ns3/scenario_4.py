@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import os
 import subprocess
 import numpy as np
@@ -20,7 +23,7 @@ algorithms = [
 
 
 def make_command(
-    algorithm, prefix_name, duration
+    algorithm, prefix_name, duration,
     bandwidth=None, delay=None,
     access_bandwidth=None, access_delay=None,
     data=None, mtu=None, num_flows=None, flow_monitor=None,
@@ -200,3 +203,11 @@ def execute_and_plot(
         prefix_name=path)
 
     plot_algorithm(algorithm, duration, save_path)
+
+
+def main():
+    pass
+
+
+if __name__=='__main__':
+    main()
