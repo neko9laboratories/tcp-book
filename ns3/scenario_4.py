@@ -27,7 +27,7 @@ if not os.path.exists(save_path):
 # コマンドライン引数を追加したコマンドを作成する関数
 def make_command(
         algorithm=None, prefix_name=None, tracing=None,
-        duration=None, bandwidth=None, delay=None,
+        duration=None, error_p=None, bandwidth=None, delay=None,
         access_bandwidth=None, access_delay=None,
         data=None, mtu=None, num_flows=None,
         flow_monitor=None, pcap_tracing=None):
@@ -36,6 +36,7 @@ def make_command(
     - algorithm: 輻輳制御アルゴリズム名．
     - prefix_name: 出力するファイルのプレフィックス名．pwdからの相対パスで表す．
     - tracing: トレーシング結果を行うか否か．
+    - error_p: パケットエラーレート．
     - duration: シミュレーション時間[s]．
     - bandwidth: ボトルネック部分の帯域．例：'2Mbps'
     - delay: ボトルネック部分の遅延．例：'0.01ms'
@@ -53,6 +54,8 @@ def make_command(
         cmd += ' --tracing={}'.format(tracing)
     if duration:
         cmd += ' --duration={}'.format(duration)
+    if error_p:
+        cmd += ' --error_p={}'.format(error_p)
     if bandwidth:
         cmd += ' --bandwidth={}'.format(bandwidth)
     if delay:
@@ -190,7 +193,7 @@ def plot_algorithm(algo, duration, save_path):
 
 # ns-3コマンドを実行して，結果をプロットする関数．
 def execute_and_plot(
-        algo, duration, save_path,
+        algo, duration, save_path, error_p=None,
         bandwidth=None, delay=None, access_bandwidth=None,
         access_delay=None, data=None, mtu=None,
         num_flows=None, flow_monitor=None,
@@ -204,7 +207,7 @@ def execute_and_plot(
     cmd = make_command(
         algorithm=algo, tracing=True,
         duration=duration, prefix_name=path,
-        bandwidth=bandwidth, delay=delay,
+	error_p=error_p, bandwidth=bandwidth, delay=delay,
         access_bandwidth=access_bandwidth,
         access_delay=access_delay,
         data=data, mtu=mtu, num_flows=num_flows,
@@ -216,8 +219,9 @@ def execute_and_plot(
 
 
 def main():
-    for algo in tqdm(algorithms, desc='Algotirhms'):
-        execute_and_plot(algo, 20, save_path)
+    #for algo in tqdm(algorithms, desc='Algotirhms'):
+    #    execute_and_plot(algo, 20, save_path)
+    execute_and_plot('TcpNewReno', 5, save_path, error_p=0.01)
 
 
 if __name__ == '__main__':
