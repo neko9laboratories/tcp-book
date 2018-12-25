@@ -13,8 +13,6 @@ plt.rcParams['font.size'] = 14
 
 # 計算結果を出力するディレクトリ名．
 save_path = 'data/chapter4/'
-# ホストOSとの共有ディレクトリ名．
-shared_path = '/home/vagrant/shared/'
 # TCPアルゴリズム一覧．
 algorithms = [
     'TcpNewReno', 'TcpHybla', 'TcpHighSpeed', 'TcpHtcp',
