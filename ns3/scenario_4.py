@@ -29,20 +29,22 @@ def make_command(
         algorithm=None, prefix_name=None, tracing=None,
         duration=None, error_p=None, bandwidth=None, delay=None,
         access_bandwidth=None, access_delay=None,
-        data=None, mtu=None, num_flows=None,
-        flow_monitor=None, pcap_tracing=None):
+        data=None, mtu=None, flow_monitor=None, pcap_tracing=None):
 
     """
     - algorithm: 輻輳制御アルゴリズム名．
     - prefix_name: 出力するファイルのプレフィックス名．pwdからの相対パスで表す．
-    - tracing: トレーシング結果を行うか否か．
-    - error_p: パケットエラーレート．
+    - tracing: トレーシングを有効化するか否か．
     - duration: シミュレーション時間[s]．
+    - error_p: パケットエラーレート．
     - bandwidth: ボトルネック部分の帯域．例：'2Mbps'
     - delay: ボトルネック部分の遅延．例：'0.01ms'
     - access_bandwidth: アクセス部分の帯域．例:'10Mbps'
     - access_delay: アクセス部分の遅延．例:'45ms'．
-    - data: 送信するデータ総量[MB]
+    - data: 送信するデータ総量[MB]．
+    - mtu: IPパケットの大きさ[byte]．
+    - flow_monitor: Flow monitorを有効化するか否か．
+    - pcap_tracing: PCAP tracingを有効化するか否か．
     """
 
     cmd = './waf --run "chapter4-base'
@@ -64,6 +66,14 @@ def make_command(
         cmd += ' --access_bandwidth={}'.format(access_bandwidth)
     if access_delay:
         cmd += ' --access_delay={}'.format(access_delay)
+    if data:
+        cmd += ' --data={}'.format(data)
+    if mtu:
+        cmd += ' --mtu={}'.format(mtu)
+    if flow_monitor:
+        cmd += ' --flow_monitor={}'.format(flow_monitor)
+    if pcap_tracing:
+        cmd += ' --pcap_tracing={}'.format(pcap_tracing)
     cmd += '"'
 
     return cmd
@@ -207,7 +217,7 @@ def execute_and_plot(
     cmd = make_command(
         algorithm=algo, tracing=True,
         duration=duration, prefix_name=path,
-	error_p=error_p, bandwidth=bandwidth, delay=delay,
+        error_p=error_p, bandwidth=bandwidth, delay=delay,
         access_bandwidth=access_bandwidth,
         access_delay=access_delay,
         data=data, mtu=mtu, num_flows=num_flows,
