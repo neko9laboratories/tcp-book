@@ -206,8 +206,7 @@ def execute_and_plot(
         algo, duration, save_path, error_p=None,
         bandwidth=None, delay=None, access_bandwidth=None,
         access_delay=None, data=None, mtu=None,
-        num_flows=None, flow_monitor=None,
-        pcap_tracing=None):
+        flow_monitor=None, pcap_tracing=None):
 
     # 保存用ディレクトリを作成．
     path = '{}{}/'.format(save_path, algo)
@@ -220,8 +219,7 @@ def execute_and_plot(
         error_p=error_p, bandwidth=bandwidth, delay=delay,
         access_bandwidth=access_bandwidth,
         access_delay=access_delay,
-        data=data, mtu=mtu, num_flows=num_flows,
-        flow_monitor=flow_monitor,
+        data=data, mtu=mtu, flow_monitor=flow_monitor,
         pcap_tracing=pcap_tracing)
 
     subprocess.check_output(cmd, shell=True).decode()
