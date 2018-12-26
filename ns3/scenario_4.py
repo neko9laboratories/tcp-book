@@ -229,9 +229,8 @@ def execute_and_plot(
 
 
 def main():
-    #for algo in tqdm(algorithms, desc='Algotirhms'):
-    #    execute_and_plot(algo, 20, save_path)
-    execute_and_plot('TcpNewReno', 5, save_path, error_p=0.01)
+    for algo in tqdm(algorithms, desc='Algotirhms'):
+        execute_and_plot(algo, 20, save_path)
 
 
 if __name__ == '__main__':
