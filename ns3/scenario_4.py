@@ -203,7 +203,7 @@ def plot_algorithm(algo, duration, save_path):
 
 # ns-3コマンドを実行して，結果をプロットする関数．
 def execute_and_plot(
-        algo, duration, save_path, error_p=None,
+        algo, duration, save_path=save_path, error_p=None,
         bandwidth=None, delay=None, access_bandwidth=None,
         access_delay=None, data=None, mtu=None,
         flow_monitor=None, pcap_tracing=None):
@@ -228,7 +228,7 @@ def execute_and_plot(
 
 def main():
     for algo in tqdm(algorithms, desc='Algotirhms'):
-        execute_and_plot(algo, 20, save_path)
+        execute_and_plot(algo, 20)
 
 
 if __name__ == '__main__':
