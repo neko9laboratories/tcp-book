@@ -235,7 +235,7 @@ def execute_and_plot(
 
 def main():
     for algo in tqdm(algorithms, desc='Algotirhms'):
-        execute_and_plot(algo, 20)
+        execute_and_plot(algo=algo, duration=20)
 
 
 if __name__ == '__main__':
