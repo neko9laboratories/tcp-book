@@ -99,7 +99,8 @@ def read_data(prefix_name, metric, duration):
 
 
 def plot_metric(
-        metric, x_max, y_label, y_deno=1, x_ticks=False):
+        metric, x_max, y_label, y_max=None,
+        y_deno=1, x_ticks=False):
 
     """
     metricの時系列変化をプロットする関数．
@@ -111,6 +112,10 @@ def plot_metric(
         c='k', where='pre')
     plt.xlim(0, x_max)
     plt.ylabel(y_label)
+
+    # y軸の最大値．
+    if y_max:
+        plt.ylim(0, y_max)
 
     # x軸のメモリを表示するか否か．
     if x_ticks:
@@ -183,11 +188,13 @@ def plot_algorithm(algo, duration, save_path):
     # 描画
     plt.figure(figsize=(12, 12))
     plt.subplot(5, 1, 1)
-    plot_metric(cwnd, duration, 'cwnd[byte]', 1)
+    plot_metric(cwnd, duration, 'cwnd[byte]')
     plt.subplot(5, 1, 2)
-    plot_metric(ssth, duration, 'ssth[byte]', 1)
+    plot_metric(
+        ssth, duration, 'ssth[byte]',
+        y_max=cwnd['value'].max())
     plt.subplot(5, 1, 3)
-    plot_metric(ack, duration, 'ack[byte]', 1)
+    plot_metric(ack, duration, 'ack[byte]')
     plt.subplot(5, 1, 4)
     plot_metric(rtt, duration, 'rtt[s]')
     plt.subplot(5, 1, 5)
