@@ -17,7 +17,7 @@ save_path = 'data/chapter4/'
 algorithms = [
     'TcpNewReno', 'TcpHybla', 'TcpHighSpeed', 'TcpHtcp',
     'TcpVegas', 'TcpScalable', 'TcpVeno', 'TcpBic', 'TcpYeah',
-    'TcpIllinois', 'TcpWestwood', 'TcpLedbat']
+    'TcpIllinois', 'TcpWestwood']
 
 # 保存用ディレクトリを作成．
 if not os.path.exists(save_path):
