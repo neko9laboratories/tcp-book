@@ -7,7 +7,6 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox" do |vb|
 
   # メモリは多めに確保した．必要があれば増強する．
-  # Ryoma Yasunaga，2018/12/1
     vb.memory = "4096"
   end
 
@@ -17,7 +16,7 @@ Vagrant.configure("2") do |config|
     # ディレクトリ構成確認用
     apt install tree
 
-    # ns-3.27
+    # # ns-3.27
     apt install -y gcc g++ python python-dev mercurial bzr gdb valgrind gsl-bin libgsl0-dev flex bison tcpdump sqlite sqlite3 libsqlite3-dev libxml2 libxml2-dev libgtk2.0-0 libgtk2.0-dev uncrustify doxygen graphviz imagemagick texlive texlive-latex-extra texlive-generic-extra texlive-generic-recommended texinfo dia texlive texlive-latex-extra texlive-extra-utils texlive-generic-recommended texi2html python-pygraphviz python-kiwi python-pygoocanvas libgoocanvas-dev python-pygccxml
     cd
     mkdir /home/vagrant/ns3
@@ -37,29 +36,24 @@ Vagrant.configure("2") do |config|
     rm -r /home/vagrant/src
     git clone https://github.com/neko9laboratories/tcp-book.git /home/vagrant/src/
 
-    # ノートブック，シェルスクリプト，scratchをns3ディレクトリに保存．
-    cp /home/vagrant/src/ns3/*.ipynb /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
+    # Pythonスクリプト，シェルスクリプト，scratchをns3ディレクトリに保存．
+    cp /home/vagrant/src/ns3/*.py /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
     cp /home/vagrant/src/ns3/*.sh /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
     cp /home/vagrant/src/ns3/scratch/* /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/scratch/
     cp -r /home/vagrant/src/ns3/data /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
     cp /home/vagrant/src/ns3/requirements.txt /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
 
     cd /home/vagrant/ns3/ns-allinone-3.27/ns-3.27
-    sudo chmod -R 777 *
+    chmod -R 777 *
     ./waf configure
 
     # Python関連のインストール．
     apt-get install python3-pip python3-dev -y
     pip3 install -r requirements.txt
 
-    # Jupyter notebookの初期設定．
-    rm -r /home/vagrant/.jupyter # 初期化
-    mkdir /home/vagrant/.jupyter
-    echo 'c = get_config()' > /home/vagrant/.jupyter/jupyter_notebook_config.py
-    echo 'c.IPKernelApp.pylab = "inline"' >> /home/vagrant/.jupyter/jupyter_notebook_config.py
-    echo 'c.NotebookApp.ip = "0.0.0.0"' >> /home/vagrant/.jupyter/jupyter_notebook_config.py
-    echo 'c.NotebookApp.password = "sha1:29ac6bb6efc7:2ad859160e205053d36f2d5330415a761e3bd469"' >> /home/vagrant/.jupyter/jupyter_notebook_config.py
-    echo 'c.NotebookApp.open_browser = False' >> /home/vagrant/.jupyter/jupyter_notebook_config.py
-
   SHELL
+
+  # ホストOSとの共有ディレクトリを追加．
+  config.vm.synced_folder './shared', '/home/vagrant/ns3/ns-allinone-3.27/ns-3.27/data', create: true, owner: 'vagrant', group: 'vagrant'
+
 end
