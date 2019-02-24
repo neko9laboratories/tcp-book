@@ -18,7 +18,7 @@ for dl in 10ms; do
   # gnuplot
   # throughput-comparison
 	gnuplot <<- EOS
-	set terminal pngcairo enhanced font "TimesNewRoman" fontscale 1.25
+	set terminal pngcairo enhanced font "TimesNewRoman" fontscale 2.5 size 1280,960
 	set output 'data/05_xx-sc${sc}-$item-${bw}-${dl}-throughput-comp.png'
 	set xlabel "Time [s]"
 	set ylabel "Throughput [Mbps]"

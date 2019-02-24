@@ -27,7 +27,7 @@ for q in 100 10000; do
   # cwnd
   for flw in 0; do
 	gnuplot <<- EOS
-	set terminal pngcairo enhanced font "TimesNewRoman" fontscale 1.25
+	set terminal pngcairo enhanced font "TimesNewRoman" fontscale 2.5 size 1280,960
 	set output 'data/05_xx-sc${sc}-$item-${bw}-${dl}-${q}-flw${flw}-cwnd.png'
 	set xlabel "Time [s]"
 	set ylabel "Window size [byte]"
@@ -42,7 +42,7 @@ for q in 100 10000; do
   
   # RTT
 	gnuplot <<- EOS
-	set terminal pngcairo enhanced font "TimesNewRoman" fontscale 1.25
+	set terminal pngcairo enhanced font "TimesNewRoman" fontscale 2.5 size 1280,960
 	set output 'data/05_xx-sc${sc}-$item-${bw}-${dl}-${q}-flw${flw}-rtt.png'
 	set xlabel "Time [s]"
 	set ylabel "RTT [s]"
@@ -52,7 +52,7 @@ for q in 100 10000; do
   
   # cong-state
 	gnuplot <<- EOS
-	set terminal pngcairo enhanced font "TimesNewRoman" fontscale 1.25
+	set terminal pngcairo enhanced font "TimesNewRoman" fontscale 2.5 size 1280,960
 	set output 'data/05_xx-sc${sc}-$item-${bw}-${dl}-${q}-flw${flw}-cong-state.png'
 	set xlabel "Time [s]"
 	set ylabel "State"
