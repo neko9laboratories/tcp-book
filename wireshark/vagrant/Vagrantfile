@@ -11,19 +11,19 @@ Vagrant.configure("2") do |config|
 
   # 各種ソフトウェアのダウンロード．
   config.vm.provision "shell", inline: <<-SHELL
-    apt-get update
-    apt-get upgrade -y
+    apt update
+    apt upgrade -y
 
     # x11 forwarding関連．
-    apt-get install x11-apps -y
+    apt install x11-apps -y
 
     # WireShark．対話型を回避するために細かい設定が必要．
-    DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install wireshark
+    DEBIAN_FRONTEND=noninteractive apt -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install wireshark
     # 一般ユーザも使えるよう，dumpcapの設定を変更する．
     setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
 
     # FTPサーバ．外部から書き込み可能な設定に変更．
-    apt-get install vsftpd -y
+    apt install vsftpd -y
     echo 'write_enable=YES' >> /etc/vsftpd.conf
 
     # FTPで転送する100MBのダミーファイル．
@@ -32,7 +32,9 @@ Vagrant.configure("2") do |config|
     chmod 777 tempfile
 
     # 輻輳制御アルゴリズムをrenoに変更．
-    sysctl -w net.ipv4.tcp_congestion_control=reno
+    echo 'net.ipv4.tcp_congestion_control = reno' >> /etc/sysctl.conf
+    sysctl -p
+    #sysctl -w net.ipv4.tcp_congestion_control=reno
 　
     # neko9レポジトリから必要なファイルをダウンロードし，~/srcに保存．
     # reload --provisionのときにエラーがで内容に，毎回初期化する．
