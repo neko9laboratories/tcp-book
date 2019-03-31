@@ -66,9 +66,8 @@ Ptr<OutputStreamWrapper> rtoStream;
 Ptr<OutputStreamWrapper> nextTxStream;
 Ptr<OutputStreamWrapper> nextRxStream;
 Ptr<OutputStreamWrapper> inFlightStream;
-// ACKおよび輻輳状態をトレースするため追加した．
+// 輻輳状態をトレースするため追加した．
 // 2018/12/7, Ryoma Yasunaga
-Ptr<OutputStreamWrapper> ackStream;
 Ptr<OutputStreamWrapper> congStateStream;
 uint32_t cWndValue;
 uint32_t ssThreshValue;
@@ -148,13 +147,6 @@ NextRxTracer (SequenceNumber32 old, SequenceNumber32 nextRx)
   *nextRxStream->GetStream () << Simulator::Now ().GetSeconds () << " " << nextRx << std::endl;
 }
 
-// ACKトレースするため追加した．
-// 2018/12/7 Ryoma Yasunaga
-static void
-AckTracer (SequenceNumber32 old, SequenceNumber32 nextAck)
-{
-  *ackStream->GetStream () << Simulator::Now ().GetSeconds () << " " << nextAck << std::endl;
-}
 
 // 輻輳状態をトレースするため追加した．
 // 2018/12/7 Ryoma Yasunaga
@@ -221,17 +213,7 @@ TraceNextRx (std::string &next_rx_seq_file_name)
   Config::ConnectWithoutContext ("/NodeList/2/$ns3::TcpL4Protocol/SocketList/1/RxBuffer/NextRxSequence", MakeCallback (&NextRxTracer));
 }
 
-// ACKをトレースするために追加した．
-// 2018/12/7 Ryoma Yasunaga
-static void
-TraceAck (std::string &ack_file_name)
-{
-  AsciiTraceHelper ascii;
-  ackStream = ascii.CreateFileStream (ack_file_name.c_str ());
-  Config::ConnectWithoutContext ("/NodeList/1/$ns3::TcpL4Protocol/SocketList/0/HighestRxAck", MakeCallback (&AckTracer));
-}
-
-// ACKをトレースするために追加した．
+// 輻輳状態をトレースするために追加した．
 // 2018/12/7 Ryoma Yasunaga
 static void
 TraceCongState (std::string &cong_state_file_name)
@@ -470,9 +452,8 @@ int main (int argc, char *argv[])
       Simulator::Schedule (Seconds (0.00001), &TraceNextTx, prefix_file_name + "next-tx.data");
       Simulator::Schedule (Seconds (0.00001), &TraceInFlight, prefix_file_name + "inflight.data");
       Simulator::Schedule (Seconds (0.1), &TraceNextRx, prefix_file_name + "next-rx.data");
-			// ACKと輻輳状態をトレースするため追加した．
+			// 輻輳状態をトレースするため追加した．
 			// 2018/12/7 Ryoma Yasunaga
-      Simulator::Schedule (Seconds (0.00001), &TraceAck, prefix_file_name + "ack.data");
       Simulator::Schedule (Seconds (0.00001), &TraceCongState, prefix_file_name + "cong-state.data");
     }
 

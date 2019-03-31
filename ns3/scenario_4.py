@@ -174,30 +174,27 @@ def plot_cong_state(
         plt.xticks([])
 
 
-# algorithmのcwnd，ssth，ack，rtt，cong-stateをプロットする関数．
+# algorithmのcwnd，ssth，rtt，cong-stateをプロットする関数．
 def plot_algorithm(algo, duration, save_path):
     path = '{}{}/'.format(save_path, algo)
 
     # データの読み込み
     cwnd = read_data(path, 'cwnd', duration)
     ssth = read_data(path, 'ssth', duration)
-    ack = read_data(path, 'ack', duration)
     rtt = read_data(path, 'rtt', duration)
     cong_state = read_data(path, 'cong-state', duration)
 
     # 描画
     plt.figure(figsize=(12, 12))
-    plt.subplot(5, 1, 1)
+    plt.subplot(4, 1, 1)
     plot_metric(cwnd, duration, 'cwnd[byte]')
-    plt.subplot(5, 1, 2)
+    plt.subplot(4, 1, 2)
     plot_metric(
         ssth, duration, 'ssth[byte]',
         y_max=cwnd['value'].max())
-    plt.subplot(5, 1, 3)
-    plot_metric(ack, duration, 'ack[byte]')
-    plt.subplot(5, 1, 4)
+    plt.subplot(4, 1, 3)
     plot_metric(rtt, duration, 'rtt[s]')
-    plt.subplot(5, 1, 5)
+    plt.subplot(4, 1, 4)
     # 一番下のプロットのみx軸を描画．
     plot_cong_state(
         cong_state, duration, 'cong-state',
