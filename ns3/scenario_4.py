@@ -188,6 +188,7 @@ def plot_algorithm(algo, duration, save_path):
     plt.figure(figsize=(12, 12))
     plt.subplot(4, 1, 1)
     plot_metric(cwnd, duration, 'cwnd[byte]')
+    plt.title(algo)
     plt.subplot(4, 1, 2)
     plot_metric(
         ssth, duration, 'ssth[byte]',
