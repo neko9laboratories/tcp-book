@@ -27,8 +27,8 @@ for dl in 10ms; do
 	plot "data/05_xx-sc${sc}-$item-${bw}-${dl}-flw0-throughput.data" using 1:2 title "Low RTT" with lines lc rgb "black" lw 2 dt (10,0), "data/05_xx-sc${sc}-$item-${bw}-${dl}-flw1-throughput.data" using 1:2 title "High RTT" with lines lc rgb "grey" lw 2 dt (10,0)
 	EOS
   
-  cp data/05_xx-sc${sc}-$item-${bw}-${dl}-*throughput.data /media/sf_neko9_tcpbook/ns3/data/sc${sc}/.
-  cp data/05_xx-sc${sc}-$item-${bw}-${dl}-*.png /media/sf_neko9_tcpbook/ns3/data/sc${sc}/.
+  cp data/05_xx-sc${sc}-$item-${bw}-${dl}-*throughput.data /media/sf_neko9_tcpbook/ns3/data/chapter5/sc${sc}/.
+  cp data/05_xx-sc${sc}-$item-${bw}-${dl}-*.png /media/sf_neko9_tcpbook/ns3/data/chapter5/sc${sc}/.
 done
 done
 done

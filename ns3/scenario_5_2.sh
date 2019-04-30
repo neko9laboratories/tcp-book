@@ -62,12 +62,12 @@ for dl in 10ms 100ms; do
 	EOS
   done
   
-  cp data/05_xx-sc${sc}-$item-${bw}-${dl}-*cwnd.data /media/sf_neko9_tcpbook/ns3/data/sc${sc}/.
-  cp data/05_xx-sc${sc}-$item-${bw}-${dl}-*rtt.data /media/sf_neko9_tcpbook/ns3/data/sc${sc}/.
-  cp data/05_xx-sc${sc}-$item-${bw}-${dl}-*cong-state.data /media/sf_neko9_tcpbook/ns3/data/sc${sc}/.
-  cp data/05_xx-sc${sc}-$item-${bw}-${dl}-*throughput.data /media/sf_neko9_tcpbook/ns3/data/sc${sc}/.
-  cp data/05_xx-sc${sc}-$item-${bw}-${dl}-queue-*.data /media/sf_neko9_tcpbook/ns3/data/sc${sc}/.
-  cp data/05_xx-sc${sc}-$item-${bw}-${dl}-*.png /media/sf_neko9_tcpbook/ns3/data/sc${sc}/.
+  cp data/05_xx-sc${sc}-$item-${bw}-${dl}-*cwnd.data /media/sf_neko9_tcpbook/ns3/data/chapter5/sc${sc}/.
+  cp data/05_xx-sc${sc}-$item-${bw}-${dl}-*rtt.data /media/sf_neko9_tcpbook/ns3/data/chapter5/sc${sc}/.
+  cp data/05_xx-sc${sc}-$item-${bw}-${dl}-*cong-state.data /media/sf_neko9_tcpbook/ns3/data/chapter5/sc${sc}/.
+  cp data/05_xx-sc${sc}-$item-${bw}-${dl}-*throughput.data /media/sf_neko9_tcpbook/ns3/data/chapter5/sc${sc}/.
+  cp data/05_xx-sc${sc}-$item-${bw}-${dl}-queue-*.data /media/sf_neko9_tcpbook/ns3/data/chapter5/sc${sc}/.
+  cp data/05_xx-sc${sc}-$item-${bw}-${dl}-*.png /media/sf_neko9_tcpbook/ns3/data/chapter5/sc${sc}/.
 done
 done
 done

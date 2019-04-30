@@ -54,11 +54,11 @@ for q in 100 1000 10000; do
 	EOS
   done
   
-  cp data/06_xx-sc${sc}-$item-${q}-*cwnd.data /media/sf_neko9_tcpbook/ns3/data/sc${sc}/.
-  cp data/06_xx-sc${sc}-$item-${q}-*rtt.data /media/sf_neko9_tcpbook/ns3/data/sc${sc}/.
-  cp data/06_xx-sc${sc}-$item-${q}-*cong-state.data /media/sf_neko9_tcpbook/ns3/data/sc${sc}/.
-  cp data/06_xx-sc${sc}-$item-${q}-*throughput.data /media/sf_neko9_tcpbook/ns3/data/sc${sc}/.
-  cp data/06_xx-sc${sc}-$item-${q}-queue-*.data /media/sf_neko9_tcpbook/ns3/data/sc${sc}/.
-  cp data/06_xx-sc${sc}-$item-${q}-*.png /media/sf_neko9_tcpbook/ns3/data/sc${sc}/.
+  cp data/06_xx-sc${sc}-$item-${q}-*cwnd.data /media/sf_neko9_tcpbook/ns3/data/chapter6/sc${sc}/.
+  cp data/06_xx-sc${sc}-$item-${q}-*rtt.data /media/sf_neko9_tcpbook/ns3/data/chapter6/sc${sc}/.
+  cp data/06_xx-sc${sc}-$item-${q}-*cong-state.data /media/sf_neko9_tcpbook/ns3/data/chapter6/sc${sc}/.
+  cp data/06_xx-sc${sc}-$item-${q}-*throughput.data /media/sf_neko9_tcpbook/ns3/data/chapter6/sc${sc}/.
+  cp data/06_xx-sc${sc}-$item-${q}-queue-*.data /media/sf_neko9_tcpbook/ns3/data/chapter6/sc${sc}/.
+  cp data/06_xx-sc${sc}-$item-${q}-*.png /media/sf_neko9_tcpbook/ns3/data/chapter6/sc${sc}/.
 done
 done
