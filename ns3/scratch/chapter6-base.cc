@@ -1,6 +1,7 @@
 /* -*- Mode:C++; c-file-style:"gnu"; indent-tabs-mode:nil; -*- */
 /*
- * Copyright (c) 2017, haltaro
+ * Copyright (c) 2013 ResiliNets, ITTC, University of Kansas
+ * Copyright (c) 2019 Yu Nakayama, Ryoma Yasunaga
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as
@@ -15,14 +16,23 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * Author: haltaro <github.com/haltaro>
- * Reseacher at a Japanese company. His reseach interests are related to
- * network architectures, protocols, traffic control, mathematical modeling,
- * optimization, machine learning, and shiba dog :-)
+ * Authors: Justin P. Rohrer, Truc Anh N. Nguyen <annguyen@ittc.ku.edu>, Siddharth Gangadhar <siddharth@ittc.ku.edu>
  *
- * This program is based on tcp-variants-comparison.cc 
- * written by Justin P. Rohrer, et al., ResiliNets, ITTC, University of Kansas.
- * */
+ * James P.G. Sterbenz <jpgs@ittc.ku.edu>, director
+ * ResiliNets Research Group  http://wiki.ittc.ku.edu/resilinets
+ * Information and Telecommunication Technology Center (ITTC)
+ * and Department of Electrical Engineering and Computer Science
+ * The University of Kansas Lawrence, KS USA.
+ *
+ * Work supported in part by NSF FIND (Future Internet Design) Program
+ * under grant CNS-0626918 (Postmodern Internet Architecture),
+ * NSF grant CNS-1050226 (Multilayer Network Resilience Analysis and Experimentation on GENI),
+ * US Department of Defense (DoD), and ITTC at The University of Kansas.
+ *
+ * “TCP Westwood(+) Protocol Implementation in ns-3”
+ * Siddharth Gangadhar, Trúc Anh Ngọc Nguyễn , Greeshma Umapathi, and James P.G. Sterbenz,
+ * ICST SIMUTools Workshop on ns-3 (WNS3), Cannes, France, March 2013
+ */
 
 #include <iostream>
 #include <fstream>
@@ -296,7 +306,7 @@ TraceQueue (Ptr< Queue< Packet > > queue, Ptr<OutputStreamWrapper> stream, std::
 	uint32_t  recP = queue->GetTotalReceivedPackets ();
 	uint32_t dropB = queue->GetTotalDroppedBytes ();
 	uint32_t dropP = queue->GetTotalDroppedPackets ();
-	
+
 	if(type.compare("bytes") == 0) {
 		*stream->GetStream() << Simulator::Now ().GetSeconds () << "\t" << sizeB << "\t" << recB << "\t" << dropB << std::endl;
 	} else {
@@ -310,7 +320,7 @@ StartQueueTrace (Ptr<NetDevice> dev, std::string type, std::string q_file_name)
 {
 	Ptr<PointToPointNetDevice> nd = StaticCast<PointToPointNetDevice> (dev);
 	Ptr< Queue< Packet > > queue = nd->GetQueue ();
-	
+
 	AsciiTraceHelper ascii;
 	Ptr<OutputStreamWrapper> st1 = ascii.CreateFileStream(q_file_name);
 	*st1->GetStream() << "Time\t" << "size\t" << "received\t" << "dropped" << "\n";
@@ -465,7 +475,7 @@ int main (int argc, char *argv[])
       address.NewNetwork ();
       interfaces = address.Assign (devices);
       StartQueueTrace(devices.Get(0), "packets", prefix_file_name + "-queue-" + std::to_string(q++) + ".data");
-      
+
       sink_interfaces.Add (interfaces.Get (1));
 
     }
@@ -483,7 +493,7 @@ int main (int argc, char *argv[])
       AddressValue remoteAddress (InetSocketAddress (sink_interfaces.GetAddress (i, 0), port));
 
       SetTcpAlgorithm2Node (sources.Get (i)->GetId(), transport_prot);
-      
+
       Config::SetDefault ("ns3::TcpSocket::SegmentSize", UintegerValue (tcp_adu_size));
       BulkSendHelper ftp ("ns3::TcpSocketFactory", Address ());
       ftp.SetAttribute ("Remote", remoteAddress);
@@ -498,7 +508,7 @@ int main (int argc, char *argv[])
       ApplicationContainer sinkApp = sinkHelper.Install (sinks);
       sinkApp.Start (Seconds (start_time * i));
       sinkApp.Stop (Seconds (stop_time));
-      
+
       StartAppTrace(sinkApp, prefix_file_name + "-flw" + std::to_string(i) + "-throughput.data");
     }
 
