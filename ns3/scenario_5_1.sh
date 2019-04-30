@@ -66,7 +66,6 @@ for dl in 10ms 100ms; do
   mv data/05_xx-sc${sc}-$item-${bw}-${dl}-*rtt.data data/chapter5/sc${sc}/.
   mv data/05_xx-sc${sc}-$item-${bw}-${dl}-*cong-state.data data/chapter5/sc${sc}/.
   mv data/05_xx-sc${sc}-$item-${bw}-${dl}-*throughput.data data/chapter5/sc${sc}/.
-  mv data/05_xx-sc${sc}-$item-${bw}-${dl}-queue-*.data data/chapter5/sc${sc}/.
   mv data/05_xx-sc${sc}-$item-${bw}-${dl}-*.png data/chapter5/sc${sc}/.
 done
 done

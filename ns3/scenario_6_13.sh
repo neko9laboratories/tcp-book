@@ -58,7 +58,6 @@ for q in 100 1000 10000; do
   mv data/06_xx-sc${sc}-$item-${q}-*rtt.data data/chapter6/sc${sc}/.
   mv data/06_xx-sc${sc}-$item-${q}-*cong-state.data data/chapter6/sc${sc}/.
   mv data/06_xx-sc${sc}-$item-${q}-*throughput.data data/chapter6/sc${sc}/.
-  mv data/06_xx-sc${sc}-$item-${q}-queue-*.data data/chapter6/sc${sc}/.
   mv data/06_xx-sc${sc}-$item-${q}-*.png data/chapter6/sc${sc}/.
 done
 done
