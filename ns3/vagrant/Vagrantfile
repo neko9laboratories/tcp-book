@@ -42,6 +42,9 @@ Vagrant.configure("2") do |config|
     cp /home/vagrant/src/ns3/scratch/* /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/scratch/
     cp -r /home/vagrant/src/ns3/data /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
     cp /home/vagrant/src/ns3/requirements.txt /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
+    cp /home/vagrant/src/ns3/src/internet/model/* /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/src/internet/model/
+    cp /home/vagrant/src/ns3/src/internet/test/* /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/src/internet/test/
+    cp /home/vagrant/src/ns3/src/internet/wscript /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/src/internet/wscript
 
     cd /home/vagrant/ns3/ns-allinone-3.27/ns-3.27
     chmod -R 777 *
