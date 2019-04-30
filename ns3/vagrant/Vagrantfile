@@ -17,19 +17,19 @@ Vagrant.configure("2") do |config|
     apt install tree
 
     # # ns-3.27
-    apt install -y gcc g++ python python-dev mercurial bzr gdb valgrind gsl-bin libgsl0-dev flex bison tcpdump sqlite sqlite3 libsqlite3-dev libxml2 libxml2-dev libgtk2.0-0 libgtk2.0-dev uncrustify doxygen graphviz imagemagick texlive texlive-latex-extra texlive-generic-extra texlive-generic-recommended texinfo dia texlive texlive-latex-extra texlive-extra-utils texlive-generic-recommended texi2html python-pygraphviz python-kiwi python-pygoocanvas libgoocanvas-dev python-pygccxml
-    cd
-    mkdir /home/vagrant/ns3
-    cd /home/vagrant/ns3/
-    wget https://www.nsnam.org/release/ns-allinone-3.27.tar.bz2
-    tar xjf ns-allinone-3.27.tar.bz2
-    cd ns-allinone-3.27/
-    ./build.py --enable-examples --enable-tests
-    cd ns-3.27/
-    ./waf -d debug --enable-examples --enable-tests configure
-    ./waf
-    ./test.py
-    cd
+    #apt install -y gcc g++ python python-dev mercurial bzr gdb valgrind gsl-bin libgsl0-dev flex bison tcpdump sqlite sqlite3 libsqlite3-dev libxml2 libxml2-dev libgtk2.0-0 libgtk2.0-dev uncrustify doxygen graphviz imagemagick texlive texlive-latex-extra texlive-generic-extra texlive-generic-recommended texinfo dia texlive texlive-latex-extra texlive-extra-utils texlive-generic-recommended texi2html python-pygraphviz python-kiwi python-pygoocanvas libgoocanvas-dev python-pygccxml
+    #cd
+    #mkdir /home/vagrant/ns3
+    #cd /home/vagrant/ns3/
+    #wget https://www.nsnam.org/release/ns-allinone-3.27.tar.bz2
+    #tar xjf ns-allinone-3.27.tar.bz2
+    #cd ns-allinone-3.27/
+    #./build.py --enable-examples --enable-tests
+    #cd ns-3.27/
+    #./waf -d debug --enable-examples --enable-tests configure
+    #./waf
+    #./test.py
+    #cd
 
     # neko9レポジトリから必要なファイルをダウンロードし，~/srcに保存．
     # reload --provisionのときにエラーが出ないように，毎回初期化する．
