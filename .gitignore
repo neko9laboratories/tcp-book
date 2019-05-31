@@ -1,2 +1,3 @@
 */vagrant/*.log
 */vagrant/.vagrant
+*/vagrant/shared/

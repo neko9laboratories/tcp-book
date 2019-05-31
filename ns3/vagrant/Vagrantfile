@@ -13,8 +13,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     apt update
 
-    # ディレクトリ構成確認用
     apt install tree
+		apt install gnuplot
 
     # ns-3.27
     apt install -y gcc g++ python python-dev mercurial bzr gdb valgrind gsl-bin libgsl0-dev flex bison tcpdump sqlite sqlite3 libsqlite3-dev libxml2 libxml2-dev libgtk2.0-0 libgtk2.0-dev uncrustify doxygen graphviz imagemagick texlive texlive-latex-extra texlive-generic-extra texlive-generic-recommended texinfo dia texlive texlive-latex-extra texlive-extra-utils texlive-generic-recommended texi2html python-pygraphviz python-kiwi python-pygoocanvas libgoocanvas-dev python-pygccxml
@@ -48,7 +48,10 @@ Vagrant.configure("2") do |config|
 
     cd /home/vagrant/ns3/ns-allinone-3.27/ns-3.27
     chmod -R 777 *
+
+		./waf clean
     ./waf configure
+		./waf
 
     # Python関連のインストール．
     apt-get install python3-pip python3-dev -y
