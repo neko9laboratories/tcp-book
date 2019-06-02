@@ -1,7 +1,7 @@
 /* -*- Mode:C++; c-file-style:"gnu"; indent-tabs-mode:nil; -*- */
 /*
  * Copyright (c) 2013 ResiliNets, ITTC, University of Kansas
- * Copyright (c) 2019 Yu Nakayama
+ * Copyright (c) 2019 Yu Nakayama, Ryoma Yasunaga
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 as

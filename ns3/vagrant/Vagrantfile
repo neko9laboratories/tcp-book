@@ -6,17 +6,17 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider "virtualbox" do |vb|
 
-  # メモリは多めに確保した．必要があれば増強する．
     vb.memory = "4096"
   end
 
   config.vm.provision "shell", inline: <<-SHELL
     apt update
 
+    # Install utilities
     apt install tree
-		apt install gnuplot
+    apt install gnuplot
 
-    # ns-3.27
+    # Install libraries required for ns-3.27
     apt install -y gcc g++ python python-dev mercurial bzr gdb valgrind gsl-bin libgsl0-dev flex bison tcpdump sqlite sqlite3 libsqlite3-dev libxml2 libxml2-dev libgtk2.0-0 libgtk2.0-dev uncrustify doxygen graphviz imagemagick texlive texlive-latex-extra texlive-generic-extra texlive-generic-recommended texinfo dia texlive texlive-latex-extra texlive-extra-utils texlive-generic-recommended texi2html python-pygraphviz python-kiwi python-pygoocanvas libgoocanvas-dev python-pygccxml
     cd
     mkdir /home/vagrant/ns3
@@ -31,35 +31,36 @@ Vagrant.configure("2") do |config|
     ./test.py
     cd
 
-    # neko9レポジトリから必要なファイルをダウンロードし，~/srcに保存．
-    # reload --provisionのときにエラーが出ないように，毎回初期化する．
-    rm -r /home/vagrant/src
-    git clone https://github.com/neko9laboratories/tcp-book.git /home/vagrant/src/
+    # Download files from GitHub repo.
+    # Delete existing /home/vagrant/temp in order to avoiding error 
+    # when reload --provision.
+    rm -r /home/vagrant/tmp
+    git clone https://github.com/neko9laboratories/tcp-book.git /home/vagrant/tmp/
 
-    # Pythonスクリプト，シェルスクリプト，scratchをns3ディレクトリに保存．
-    cp /home/vagrant/src/ns3/*.py /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
-    cp /home/vagrant/src/ns3/*.sh /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
-    cp /home/vagrant/src/ns3/scratch/* /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/scratch/
-    cp -r /home/vagrant/src/ns3/data /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
-    cp /home/vagrant/src/ns3/requirements.txt /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
-    cp /home/vagrant/src/ns3/src/internet/model/* /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/src/internet/model/
-    cp /home/vagrant/src/ns3/src/internet/test/* /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/src/internet/test/
-    cp /home/vagrant/src/ns3/src/internet/wscript /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/src/internet/wscript
+    # Copy python scripts, shell scripts, scratch directory to ns-3 home direcory.
+    cp /home/vagrant/tmp/ns3/*.py /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
+    cp /home/vagrant/tmp/ns3/*.sh /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
+    cp /home/vagrant/tmp/ns3/scratch/* /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/scratch/
+    cp -r /home/vagrant/tmp/ns3/data /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
+    cp /home/vagrant/tmp/ns3/requirements.txt /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
+    cp /home/vagrant/tmp/ns3/src/internet/model/* /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/src/internet/model/
+    cp /home/vagrant/tmp/ns3/src/internet/test/* /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/src/internet/test/
+    cp /home/vagrant/tmp/ns3/src/internet/wscript /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/src/internet/wscript
 
     cd /home/vagrant/ns3/ns-allinone-3.27/ns-3.27
     chmod -R 777 *
 
-		./waf clean
+    ./waf clean
     ./waf configure
-		./waf
+    ./waf
 
-    # Python関連のインストール．
+    # Install python libraries.
     apt-get install python3-pip python3-dev -y
     pip3 install -r requirements.txt
 
   SHELL
 
-  # ホストOSとの共有ディレクトリを追加．
+  # Sync shared directory with host OS.
   config.vm.synced_folder './shared', '/home/vagrant/ns3/ns-allinone-3.27/ns-3.27/data', create: true, owner: 'vagrant', group: 'vagrant'
 
 end
