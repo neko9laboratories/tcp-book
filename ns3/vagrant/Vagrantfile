@@ -41,7 +41,26 @@ Vagrant.configure("2") do |config|
     cp /home/vagrant/tmp/ns3/*.py /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
     cp /home/vagrant/tmp/ns3/*.sh /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
     cp /home/vagrant/tmp/ns3/scratch/* /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/scratch/
-    cp -r /home/vagrant/tmp/ns3/data /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
+    #cp -r /home/vagrant/tmp/ns3/data /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter5
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter5/sc1
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter5/sc2
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter5/sc3
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter5/sc4
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter5/sc5
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter5/sc6
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter5/sc7
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter5/sc8
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter5/sc9
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter5/sc10
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter6
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter6/sc11
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter6/sc12
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter6/sc13
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter6/sc14
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter6/sc15
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter6/sc16
+    mkdir /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/chapter6/sc17
     cp /home/vagrant/tmp/ns3/requirements.txt /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/
     cp /home/vagrant/tmp/ns3/src/internet/model/* /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/src/internet/model/
     cp /home/vagrant/tmp/ns3/src/internet/test/* /home/vagrant/ns3/ns-allinone-3.27/ns-3.27/src/internet/test/
