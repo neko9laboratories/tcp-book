@@ -81,3 +81,5 @@ for dl in 10ms 100ms; do
 done
 done
 done
+
+rm data/06_xx-sc${sc}-*

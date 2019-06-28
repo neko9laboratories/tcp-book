@@ -73,4 +73,4 @@ for q in 100 1000 10000; do
 done
 done
 
-inflight
+rm data/06_xx-sc${sc}-*

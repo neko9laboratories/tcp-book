@@ -72,3 +72,5 @@ done
 done
 done
 done
+
+rm data/05_xx-sc${sc}-*
