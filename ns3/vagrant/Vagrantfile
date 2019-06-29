@@ -54,9 +54,9 @@ Vagrant.configure("2") do |config|
     ./waf clean
     ./waf
 
-		shopt -s dotglob
+    shopt -s dotglob
     chmod -R 777 *
-		shopt -u dotglob
+    shopt -u dotglob
 
     # Install python libraries.
     apt install python3-pip python3-dev -y

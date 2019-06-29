@@ -72,5 +72,3 @@ for q in 100 1000 10000; do
   mv data/06_xx-sc${sc}-$item-${q}-*.png data/chapter6/sc${sc}/.
 done
 done
-
-inflight
