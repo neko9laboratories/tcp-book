@@ -184,6 +184,14 @@ vagrant@ubuntu-xenial:~$
 
 上記のようにプロンプトが`vagrant@ubuntu-xenial:~$`に変わったら，SSH接続成功です．
 
+## 正誤表
+
+本書の正誤情報は以下のページで公開しています．
+
+https://github.com/neko9laboratories/tcp-book/wiki/errata
+
+本ページに掲載されていない誤植など間違いを見つけた方は，[技術評論社の問い合わせページ](https://gihyo.jp/site/inquiry/book?ISBN=978-4-297-10623-2)までお知らせください．
+
 ## 著者プロフィール
 
 ### 安永遼真（やすながりょうま）
