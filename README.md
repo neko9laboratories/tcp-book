@@ -1,5 +1,7 @@
 # TCP技術入門――進化を続ける基本プロトコル
 
+Technical Introduction to TCP: An essential protocol keeping evolution
+
 ![cover](fig/cover.png)
 
 [TCP技術入門――進化を続ける基本プロトコル](https://gihyo.jp/book/2019/978-4-297-10623-2)のサポートページです．
